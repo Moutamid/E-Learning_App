@@ -9,7 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
 
@@ -18,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.item1);*/
+        bottomNavigationView.setSelectedItemId(R.id.item1);
 
     }
-    /*DiscoverFragment discoverFragment = new DiscoverFragment();
+
+    DiscoverFragment discoverFragment = new DiscoverFragment();
     SearchFragment searchFragment = new SearchFragment();
     MyCourseFragment myCourseFragment = new MyCourseFragment();
     ChatFragment chatFragment = new ChatFragment();
@@ -35,25 +36,26 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.item1:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, discoverFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment , discoverFragment).commit();
                 return true;
 
             case R.id.item2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, searchFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, searchFragment).commit();
                 return true;
 
             case R.id.item3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, myCourseFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, myCourseFragment).commit();
                 return true;
 
             case R.id.item4:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, chatFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, chatFragment).commit();
                 return true;
 
             case R.id.item5:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, accountFragment).commit();
                 return true;
         }
         return false;
-    }*/
+    }
+
 }

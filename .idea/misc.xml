@@ -3,17 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_cast_for_education_24.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_baseline_cast_for_education_24_appclr.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_category_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_chat_bubble_outline_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_screen_share_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/left_msg.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/rectangle.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/rectangle2.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/rectangle3.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/rectangle3_top.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/rectangle4_black.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/shapable_back.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_display.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_sign_up_instructor.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_community_.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_content_.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_my_course.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_chat.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_chat_left.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_chat_right.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_courses.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/row_enrolled.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25833333333333336" />
       </map>
     </option>

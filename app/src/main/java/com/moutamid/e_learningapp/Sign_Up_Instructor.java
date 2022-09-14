@@ -14,11 +14,9 @@ import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Sign_Up_Activity extends AppCompatActivity {
+public class Sign_Up_Instructor extends AppCompatActivity {
 
-    TextView goto_signup;
     Button submit_login_btn;
-
     CardView select_image;
     CircleImageView profile_image;
 
@@ -28,7 +26,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_up_instructor);
 
         select_image = findViewById(R.id.select_image);
         profile_image = findViewById(R.id.profile_image);
@@ -40,21 +38,11 @@ public class Sign_Up_Activity extends AppCompatActivity {
             }
         });
 
-        goto_signup = findViewById(R.id.goto_signin);
-        goto_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent = new Intent(Sign_Up_Activity.this, Login_Activity.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        });
-
         submit_login_btn = findViewById(R.id.Register_btn);
         submit_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(Sign_Up_Activity.this, MainActivity.class);
+                Intent homeIntent = new Intent(Sign_Up_Instructor.this, MainActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
@@ -77,7 +65,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
             profile_image.setImageURI(uri);
         }
         else {
-            Toast.makeText(Sign_Up_Activity.this, "No Image is Selected...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Sign_Up_Instructor.this, "No Image is Selected...", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -3,40 +3,31 @@ package com.moutamid.e_learningapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyCourseFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class MyCourseFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private String[] course_title = {"Wordpress Web Development", "Android App Development", "Graphics Designing Course", "SEO Course",};
+    private String[] course_tutor = {"By Mr. Osama", "By Mr. Ali", "By Mr. Moutamid","By Mr. Example",};
+    private int[] images1_detail = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.course_img};
+
+    private RecyclerView detail_recycler;
+    private ArrayList<Model_Enrolled> modelEnrolledArrayList;
+    private Adapter_Enrolled adapter_enrolled;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public MyCourseFragment() {
-        // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyCourseFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static MyCourseFragment newInstance(String param1, String param2) {
         MyCourseFragment fragment = new MyCourseFragment();
         Bundle args = new Bundle();
@@ -45,7 +36,6 @@ public class MyCourseFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +48,24 @@ public class MyCourseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_course, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_course, container, false);
+        detail_recycler = view.findViewById(R.id.recyclerView_enrolled);
+        load_detail();
+        return view;
+    }
+
+    private void load_detail() {
+        modelEnrolledArrayList = new ArrayList<>();
+
+        for (int i = 0; i < course_title.length; i++) {
+            Model_Enrolled modelAndroid = new Model_Enrolled(
+                    course_title[i],
+                    course_tutor[i],
+                    images1_detail[i]
+            );
+            modelEnrolledArrayList.add(modelAndroid);
+        }
+        adapter_enrolled = new Adapter_Enrolled(getContext(), modelEnrolledArrayList);
+        detail_recycler.setAdapter(adapter_enrolled);
     }
 }

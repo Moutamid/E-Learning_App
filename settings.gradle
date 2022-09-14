@@ -3,7 +3,8 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // add like this
+        maven { url 'https://jitpack.io' }
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -11,7 +12,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
         maven { url 'https://jitpack.io' }
+
     }
 }
 rootProject.name = "E-Learning App"
