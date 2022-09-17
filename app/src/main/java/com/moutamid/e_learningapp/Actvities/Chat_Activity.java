@@ -19,6 +19,7 @@ public class Chat_Activity extends AppCompatActivity {
 
     ImageView close;
 
+    // material for offline recyclers
     private String[] message_chat = {"Hi1", "Hi2", "Hi3", "Hi4", "Hi5", "Hi6",};
     private String[] time_chat = {"Just Now ", "9 hours ago " , "9 hours ago " , "Just Now ", "9 hours ago ", "Just Now",};
     private int[] image_chat = {R.drawable.boy, R.drawable.boy2 , R.drawable.boy ,R.drawable.boy2, R.drawable.boy, R.drawable.boy2, };
@@ -47,6 +48,7 @@ public class Chat_Activity extends AppCompatActivity {
         loadchat();
     }
 
+    // data of recycler view call in loop
     private void loadchat() {
         messageArrayList = new ArrayList<>();
 

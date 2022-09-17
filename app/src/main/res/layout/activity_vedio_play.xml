@@ -11,7 +11,7 @@
         android:id="@+id/text_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rectangle3_top"
+        android:background="@color/appClr"
         android:gravity="center"
         android:padding="10dp"
         android:text="Vedio"
@@ -21,10 +21,9 @@
 
     <VideoView
         android:id="@+id/vidvw"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="350dp" />
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

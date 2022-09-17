@@ -22,7 +22,9 @@
         <entry key="app/src/main/res/drawable/rectangle3_top.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/rectangle4_black.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/shapable_back.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/shapable_back_item.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_course_fragment.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_display.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
@@ -36,6 +38,7 @@
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_community_.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_content_.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_course_.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_my_course.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.19610507246376813" />

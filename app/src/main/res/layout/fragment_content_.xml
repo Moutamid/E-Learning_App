@@ -29,6 +29,30 @@
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
 
+                    <VideoView
+                        android:id="@+id/vidvw2"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:id="@+id/content_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vedio one Automatically Playing..."
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#808080"/>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView_content"
                         android:layout_width="wrap_content"

@@ -11,22 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_top"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle3_top"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="My Courses"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:background="@color/purple_700"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:title="My Courses" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_top">
+            android:layout_below="@+id/toolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +36,7 @@
                     android:layout_height="match_parent"
                     tools:listitem="@layout/row_enrolled"
                     android:orientation="vertical"
-                    app:spanCount="2"
+                    app:spanCount="1"
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:scrollbars="vertical" />

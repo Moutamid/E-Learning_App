@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -60,7 +61,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
 
         holder.image.setImageResource(image_1);
 
-        holder.btn_enroll.setOnClickListener(new View.OnClickListener() {
+        holder.card_enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context , Display_Activity.class);
@@ -79,7 +80,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
 
         private ImageView image ;
         private TextView title , tutor , member , efficient , price , status , time , desc;
-        private TextView btn_enroll;
+        private CardView card_enroll;
 
         HolderAndroid(@NonNull View itemView) {
             super(itemView);
@@ -93,7 +94,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
             status = itemView.findViewById(R.id.course_status);
             time = itemView.findViewById(R.id.course_time);
             desc = itemView.findViewById(R.id.course_des);
-            btn_enroll = itemView.findViewById(R.id.btn_enroll);
+            card_enroll = itemView.findViewById(R.id.card_enroll);
 
         }
     }

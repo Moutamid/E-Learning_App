@@ -15,6 +15,7 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 import com.moutamid.e_learningapp.Fragments.Community_Fragment;
 import com.moutamid.e_learningapp.Fragments.Content_Fragment;
+import com.moutamid.e_learningapp.Fragments.Course_Fragment;
 import com.moutamid.e_learningapp.R;
 
 import java.util.ArrayList;
@@ -22,13 +23,15 @@ import java.util.List;
 
 public class Display_Activity extends AppCompatActivity {
 
+    // here this activity display when user click on course
+    // here we have 3 tabs content , community and course details
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private CoordinatorLayout mCoordLayout;
 
     private Community_Fragment community_fragment;
     private Content_Fragment content_fragment;
+    private Course_Fragment course_fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +49,14 @@ public class Display_Activity extends AppCompatActivity {
     private void setupViewPager(ViewPager mViewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager() , BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
-        community_fragment = new Community_Fragment();
         content_fragment = new Content_Fragment();
+        course_fragment = new Course_Fragment();
+        community_fragment = new Community_Fragment();
 
-        adapter.addFragment(community_fragment, "Community");
+        // tab layout which is to be displayed in viewpager
         adapter.addFragment(content_fragment, "Content");
+        adapter.addFragment(course_fragment, "Course");
+        adapter.addFragment(community_fragment, "Community");
 
         mViewPager.setAdapter(adapter);
     }
