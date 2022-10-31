@@ -2,7 +2,7 @@ package com.moutamid.e_learningapp.Models;
 
 public class Model_Courses {
     String title , tutor , member , efficient , price , status , time , des ;
-    int image ;
+    int image;
 
     public Model_Courses() {
     }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.moutamid.e_learningapp.Actvities.Display_Activity;
+import com.moutamid.e_learningapp.Actvities.Sign_Up_Activity;
+import com.moutamid.e_learningapp.Constants;
 import com.moutamid.e_learningapp.Models.Model_Courses;
 import com.moutamid.e_learningapp.R;
 
@@ -61,12 +64,18 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
 
         holder.image.setImageResource(image_1);
 
-        holder.card_enroll.setOnClickListener(new View.OnClickListener() {
+        holder.enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context , Display_Activity.class);
-                context.startActivity(intent);
-                Animatoo.animateFade(context);
+                if (Constants.auth().getCurrentUser() != null){
+                    Intent intent = new Intent(context , Display_Activity.class);
+                    context.startActivity(intent);
+                    Animatoo.animateFade(context);
+                } else {
+                    Intent intent = new Intent(context , Sign_Up_Activity.class);
+                    context.startActivity(intent);
+                    Animatoo.animateFade(context);
+                }
             }
         });
     }
@@ -81,6 +90,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         private ImageView image ;
         private TextView title , tutor , member , efficient , price , status , time , desc;
         private CardView card_enroll;
+        Button enroll;
 
         HolderAndroid(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +104,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
             status = itemView.findViewById(R.id.course_status);
             time = itemView.findViewById(R.id.course_time);
             desc = itemView.findViewById(R.id.course_des);
+            enroll = itemView.findViewById(R.id.btn_enroll);
             card_enroll = itemView.findViewById(R.id.card_enroll);
 
         }

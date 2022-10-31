@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.moutamid.e_learningapp.Adapter.Adapter_Courses;
+import com.moutamid.e_learningapp.Constants;
 import com.moutamid.e_learningapp.Models.Model_Courses;
 import com.moutamid.e_learningapp.R;
 
@@ -34,6 +35,7 @@ public class DiscoverFragment extends Fragment {
     private RecyclerView detail_recycler;
     private ArrayList<Model_Courses> modelCoursesArrayList;
     private Adapter_Courses adapter_courses;
+    Model_Courses model_courses;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +69,11 @@ public class DiscoverFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
         detail_recycler = view.findViewById(R.id.recyclerView_courses);
+
         load_detail();
+
+        Constants.databaseReference().child("courses");
+
         return view;
     }
 
