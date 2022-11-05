@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle"
-                    android:hint="Password (more than 6)"
+                    android:hint="Password (more than 8)"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
@@ -238,9 +238,9 @@
                 android:id="@+id/select_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:padding="20dp"
-                android:layout_gravity="center"
                 app:cardBackgroundColor="@color/appClr"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">

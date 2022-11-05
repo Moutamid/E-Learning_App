@@ -1,15 +1,17 @@
 package com.moutamid.e_learningapp.Models;
 
-public class UserModel {
-    String name, email, password, image;
+public class ModelInsturctor {
+    String name, email, password, coursename, coursedes,image;
 
-    public UserModel() {
+    public ModelInsturctor() {
     }
 
-    public UserModel(String name, String email, String password, String image) {
+    public ModelInsturctor(String name, String email, String password, String coursename, String coursedes, String image) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.coursename = coursename;
+        this.coursedes = coursedes;
         this.image = image;
     }
 
@@ -35,6 +37,22 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCoursename() {
+        return coursename;
+    }
+
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
+    }
+
+    public String getCoursedes() {
+        return coursedes;
+    }
+
+    public void setCoursedes(String coursedes) {
+        this.coursedes = coursedes;
     }
 
     public String getImage() {

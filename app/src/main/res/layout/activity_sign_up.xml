@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle"
-                    android:hint="Password (more than 6)"
+                    android:hint="Password (more than 8)"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
