@@ -182,9 +182,9 @@
                 android:id="@+id/select_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:padding="20dp"
-                android:layout_gravity="center"
                 app:cardBackgroundColor="@color/appClr"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">

@@ -123,7 +123,7 @@
                     android:layout_margin="10dp"
                     />
 
-                <TextView
+                <Button
                     android:id="@+id/btn_enroll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
