@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -20,15 +22,18 @@ import com.moutamid.e_learningapp.Models.Model_Courses;
 import com.moutamid.e_learningapp.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
-public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.HolderAndroid> {
+public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.HolderAndroid> implements Filterable {
 
     private Context context;
     private ArrayList<Model_Courses> androidArrayList;
+    ArrayList<Model_Courses> listAll;
 
     public Adapter_Courses(Context context, ArrayList<Model_Courses> androidArrayList) {
         this.context = context;
         this.androidArrayList = androidArrayList;
+        listAll = new ArrayList<>(androidArrayList);
     }
 
     @NonNull
@@ -84,6 +89,41 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
     public int getItemCount() {
         return androidArrayList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+
+        //run on background thread
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<Model_Courses> filterList = new ArrayList<>();
+            if (charSequence.toString().isEmpty()){
+                filterList.addAll(listAll);
+            } else {
+                for (Model_Courses listModel : listAll){
+                    if (listModel.getTitle().toLowerCase().contains(charSequence.toString().toLowerCase())){
+                        filterList.add(listModel);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterList;
+
+            return filterResults;
+        }
+
+        //run on Ui thread
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            androidArrayList.clear();
+            androidArrayList.addAll((Collection<? extends Model_Courses>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     class HolderAndroid extends RecyclerView.ViewHolder {
 
