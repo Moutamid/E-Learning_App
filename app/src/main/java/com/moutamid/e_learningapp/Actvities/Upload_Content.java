@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -31,13 +32,14 @@ import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.R;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Upload_Content extends AppCompatActivity {
 
     Button upload_course;
-    EditText name, desc;
+    EditText name, desc, price;
     CardView select_image, select_video;
     CircleImageView profile_image;
     Model_Content model_content;
@@ -65,6 +67,7 @@ public class Upload_Content extends AppCompatActivity {
         desc = findViewById(R.id.desc_et);
         categories = findViewById(R.id.CategoryList);
         et_category = findViewById(R.id.etCatagory);
+        price = findViewById(R.id.price_et);
 
         progressDialog = new ProgressDialog(Upload_Content.this);
         progressDialogV = new ProgressDialog(Upload_Content.this);
@@ -109,6 +112,10 @@ public class Upload_Content extends AppCompatActivity {
             et_category.getEditText().setError("Please Add a Course Category");
             return false;
         }
+        if (price.getText().toString().isEmpty()){
+            price.setError("Course Price is Required");
+            return false;
+        }
         if (uriVideo == null){
             Toast.makeText(this, "Please add a course video", Toast.LENGTH_SHORT).show();
             return false;
@@ -129,15 +136,34 @@ public class Upload_Content extends AppCompatActivity {
                 .start();
     }
 
+    private String getVideoLength(){
+        MediaPlayer mp = MediaPlayer.create(this, uriVideo);
+        int duration = mp.getDuration();
+        mp.release();
+        /*convert millis to appropriate time*/
+        return String.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes(duration),
+                TimeUnit.MILLISECONDS.toSeconds(duration) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))
+        );
+    }
+
     private void getCourseData() {
+        String l = getVideoLength();
         model_content = new Model_Content(
                 uuID,
                 name.getText().toString(),
                 desc.getText().toString(),
+                "",
+                "",
+                0,
                 "By ",
+                l,
+                false,
                 videoLink,
                 imageLink,
-                et_category.getEditText().getText().toString()
+                et_category.getEditText().getText().toString(),
+                price.getText().toString()
         );
         Constants.databaseReference().child("course_contents").child(Constants.auth().getCurrentUser().getUid())
                 .child(uuID).setValue(model_content)

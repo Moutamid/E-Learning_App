@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.moutamid.e_learningapp.Actvities.Display_Activity;
 import com.moutamid.e_learningapp.Actvities.Sign_Up_Activity;
 import com.moutamid.e_learningapp.Constants;
+import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.Models.Model_Courses;
 import com.moutamid.e_learningapp.R;
 
@@ -28,10 +29,10 @@ import java.util.Collection;
 public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.HolderAndroid> implements Filterable {
 
     private Context context;
-    private ArrayList<Model_Courses> androidArrayList;
-    ArrayList<Model_Courses> listAll;
+    private ArrayList<Model_Content> androidArrayList;
+    ArrayList<Model_Content> listAll;
 
-    public Adapter_Courses(Context context, ArrayList<Model_Courses> androidArrayList) {
+    public Adapter_Courses(Context context, ArrayList<Model_Content> androidArrayList) {
         this.context = context;
         this.androidArrayList = androidArrayList;
         listAll = new ArrayList<>(androidArrayList);
@@ -46,22 +47,22 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
 
     @Override
     public void onBindViewHolder(@NonNull HolderAndroid holder, int position) {
-        Model_Courses modelAndroid = androidArrayList.get(position);
+        Model_Content modelAndroid = androidArrayList.get(position);
 
         String title_tv = modelAndroid.getTitle();
         String tutor_tv = modelAndroid.getTutor();
-        String member_tv = modelAndroid.getMember();
+        long member_tv = modelAndroid.getMember();
         String eff_tv = modelAndroid.getEfficient();
         String price_tv = modelAndroid.getPrice();
         String status_tv = modelAndroid.getStatus();
-        String time_tv = modelAndroid.getTime();
-        String des_tv = modelAndroid.getDes();
+        String time_tv = modelAndroid.getVideo_length();
+        String des_tv = modelAndroid.getDesc();
 
         String image_1 = modelAndroid.getImage();
 
         holder.title.setText(title_tv);
         holder.tutor.setText(tutor_tv);
-        holder.member.setText(member_tv);
+        holder.member.setText(""+member_tv);
         holder.efficient.setText(eff_tv);
         holder.price.setText(price_tv);
         holder.status.setText(status_tv);
@@ -101,11 +102,11 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         //run on background thread
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
-            ArrayList<Model_Courses> filterList = new ArrayList<>();
+            ArrayList<Model_Content> filterList = new ArrayList<>();
             if (charSequence.toString().isEmpty()){
                 filterList.addAll(listAll);
             } else {
-                for (Model_Courses listModel : listAll){
+                for (Model_Content listModel : listAll){
                     if (listModel.getTitle().toLowerCase().contains(charSequence.toString().toLowerCase())){
                         filterList.add(listModel);
                     }
@@ -121,7 +122,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             androidArrayList.clear();
-            androidArrayList.addAll((Collection<? extends Model_Courses>) filterResults.values);
+            androidArrayList.addAll((Collection<? extends Model_Content>) filterResults.values);
             notifyDataSetChanged();
         }
     };
