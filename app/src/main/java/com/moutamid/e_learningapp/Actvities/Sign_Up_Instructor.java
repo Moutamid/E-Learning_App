@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.moutamid.e_learningapp.Constants;
-import com.moutamid.e_learningapp.Models.ModelInsturctor;
 import com.moutamid.e_learningapp.Models.UserModel;
 import com.moutamid.e_learningapp.R;
 
@@ -39,6 +38,7 @@ public class Sign_Up_Instructor extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_instructor);
         progressDialog = new ProgressDialog(Sign_Up_Instructor.this);
         progressDialog.setMessage("Creating your account");
+        progressDialog.
 
         select_image = findViewById(R.id.select_image);
         profile_image = findViewById(R.id.profile_image);
@@ -71,15 +71,16 @@ public class Sign_Up_Instructor extends AppCompatActivity {
                                 .child("logo").child(authResult.getUser().getUid() + d.getTime())
                                 .putFile(uri).addOnSuccessListener(taskSnapshot -> {
                                     taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                                        ModelInsturctor model = new ModelInsturctor(
+                                        UserModel model = new UserModel(
                                                 name.getText().toString(),
                                                 email.getText().toString(),
                                                 password.getText().toString(),
                                                 coursename.getText().toString(),
                                                 courseDes.getText().toString(),
-                                                uri.toString()
+                                                uri.toString(),
+                                                true
                                         );
-                                        Constants.databaseReference().child("instructors")
+                                        Constants.databaseReference().child("users")
                                                 .child(authResult.getUser().getUid())
                                                 .setValue(model)
                                                 .addOnSuccessListener(unused -> {

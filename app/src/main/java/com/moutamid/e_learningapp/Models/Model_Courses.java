@@ -2,12 +2,12 @@ package com.moutamid.e_learningapp.Models;
 
 public class Model_Courses {
     String title , tutor , member , efficient , price , status , time , des ;
-    int image;
+    String image;
 
     public Model_Courses() {
     }
 
-    public Model_Courses(String title, String tutor, String member, String efficient, String price, String status, String time, String des, int image) {
+    public Model_Courses(String title, String tutor, String member, String efficient, String price, String status, String time, String des, String image) {
         this.title = title;
         this.tutor = tutor;
         this.member = member;
@@ -83,11 +83,11 @@ public class Model_Courses {
         this.des = des;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

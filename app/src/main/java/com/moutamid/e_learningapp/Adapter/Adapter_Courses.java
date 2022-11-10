@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.bumptech.glide.Glide;
 import com.moutamid.e_learningapp.Actvities.Display_Activity;
 import com.moutamid.e_learningapp.Actvities.Sign_Up_Activity;
 import com.moutamid.e_learningapp.Constants;
@@ -56,7 +57,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         String time_tv = modelAndroid.getTime();
         String des_tv = modelAndroid.getDes();
 
-        int image_1 = modelAndroid.getImage();
+        String image_1 = modelAndroid.getImage();
 
         holder.title.setText(title_tv);
         holder.tutor.setText(tutor_tv);
@@ -67,7 +68,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         holder.time.setText(time_tv);
         holder.desc.setText(des_tv);
 
-        holder.image.setImageResource(image_1);
+        Glide.with(context).load(modelAndroid.getImage()).into(holder.image);
 
         holder.enroll.setOnClickListener(new View.OnClickListener() {
             @Override

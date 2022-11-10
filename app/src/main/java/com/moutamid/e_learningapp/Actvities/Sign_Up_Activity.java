@@ -88,7 +88,8 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                             name.getText().toString(),
                                             email.getText().toString(),
                                             password.getText().toString(),
-                                            uri.toString()
+                                            uri.toString(),
+                                            false
                                             );
                                     Constants.databaseReference().child("users")
                                             .child(authResult.getUser().getUid())
