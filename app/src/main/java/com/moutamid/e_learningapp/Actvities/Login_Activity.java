@@ -34,6 +34,7 @@ public class Login_Activity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(Login_Activity.this);
         progressDialog.setMessage("Logging In");
+        progressDialog.setCancelable(false);
 
         goto_signup = findViewById(R.id.goto_signup);
         goto_signup.setOnClickListener(new View.OnClickListener() {

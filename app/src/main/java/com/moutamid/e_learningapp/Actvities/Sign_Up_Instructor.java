@@ -38,6 +38,7 @@ public class Sign_Up_Instructor extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_instructor);
         progressDialog = new ProgressDialog(Sign_Up_Instructor.this);
         progressDialog.setMessage("Creating your account");
+        progressDialog.setCancelable(false);
 
         select_image = findViewById(R.id.select_image);
         profile_image = findViewById(R.id.profile_image);

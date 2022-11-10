@@ -44,6 +44,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(Sign_Up_Activity.this);
         progressDialog.setMessage("Creating your account");
+        progressDialog.setCancelable(false);
 
         select_image = findViewById(R.id.select_image);
         profile_image = findViewById(R.id.profile_image);

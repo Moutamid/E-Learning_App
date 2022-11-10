@@ -89,9 +89,35 @@ public class Upload_Content extends AppCompatActivity {
         upload_course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadImage();
+                if (validate()){
+                    uploadImage();
+                }
             }
         });
+    }
+
+    private boolean validate() {
+        if (name.getText().toString().isEmpty()){
+            name.setError("Course Title is Required");
+            return false;
+        }
+        if (desc.getText().toString().isEmpty()){
+            desc.setError("Course Description is Required");
+            return false;
+        }
+        if (et_category.getEditText().getText().toString().isEmpty()){
+            et_category.getEditText().setError("Please Add a Course Category");
+            return false;
+        }
+        if (uriVideo == null){
+            Toast.makeText(this, "Please add a course video", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (uriImage == null){
+            Toast.makeText(this, "Please add a course Thumbnail", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void openImage() {
