@@ -41,10 +41,10 @@ public class Adapter_Content extends RecyclerView.Adapter<Adapter_Content.Holder
         Model_Content modelAndroid = androidArrayList.get(position);
 
         String title_tv = modelAndroid.getTitle();
-        int image_1 = modelAndroid.getImage();
+        String image_1 = modelAndroid.getVideo_link();
 
         holder.title.setText(title_tv);
-        holder.image.setImageResource(image_1);
+        holder.image.setImageResource(0);
 
         holder.card_vedio.setOnClickListener(new View.OnClickListener() {
             @Override

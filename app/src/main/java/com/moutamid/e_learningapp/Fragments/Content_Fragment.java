@@ -97,13 +97,7 @@ public class Content_Fragment extends Fragment implements MediaPlayer.OnCompleti
     private void load_detail() {
         modelContentArrayList = new ArrayList<>();
 
-        for (int i = 0; i < course_title.length; i++) {
-            Model_Content modelAndroid = new Model_Content(
-                    course_title[i],
-                    images1_detail[i]
-            );
-            modelContentArrayList.add(modelAndroid);
-        }
+
         adapter_content = new Adapter_Content(getContext(), modelContentArrayList);
         detail_recycler.setAdapter(adapter_content);
     }

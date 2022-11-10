@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.2165" />
+        <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.208" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/drawable/rectangle4_black.xml" value="0.2165" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_chat.xml" value="0.22" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_display.xml" value="0.209375" />
@@ -11,7 +13,8 @@
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_sign_up.xml" value="0.209375" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_sign_up_instructor.xml" value="0.209375" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
-        <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_upload_content.xml" value="0.209375" />
+        <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/activity_upload_content.xml" value="0.22" />
+        <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/dropdown_layout.xml" value="0.209375" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/fragment_my_course.xml" value="0.209375" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/fragment_search.xml" value="0.33" />
         <entry key="..\:/BridgeLinxProject/E-Learning_App/app/src/main/res/layout/row_courses.xml" value="0.5" />

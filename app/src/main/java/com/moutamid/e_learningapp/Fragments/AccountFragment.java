@@ -55,6 +55,8 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         content_btn = view.findViewById(R.id.content_btn);
         instructor = view.findViewById(R.id.instructor);
+        singIn = view.findViewById(R.id.singIn);
+        signUp = view.findViewById(R.id.signUp);
 
         if (Constants.auth().getCurrentUser() == null){
             content_btn.setVisibility(View.GONE);
@@ -67,12 +69,17 @@ public class AccountFragment extends Fragment {
                            if (model.isInstructor()){
                                content_btn.setVisibility(View.VISIBLE);
                                instructor.setVisibility(View.GONE);
+                               signUp.setVisibility(View.GONE);
+                               singIn.setVisibility(View.GONE);
+                           } else {
+                               content_btn.setVisibility(View.GONE);
+                               instructor.setVisibility(View.GONE);
+                               signUp.setVisibility(View.GONE);
+                               singIn.setVisibility(View.GONE);
                            }
                        }
                     });
         }
-
-        singIn = view.findViewById(R.id.singIn);
         singIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,8 +88,6 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        signUp = view.findViewById(R.id.signUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
