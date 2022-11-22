@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.moutamid.e_learningapp.Adapter.Adapter_Courses;
+import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.Models.Model_Courses;
 import com.moutamid.e_learningapp.R;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment {
 
     private RecyclerView detail_recycler;
-    private ArrayList<Model_Courses> modelCoursesArrayList;
+    private ArrayList<Model_Content> modelCoursesArrayList;
     private Adapter_Courses adapter_courses;
     EditText search;
 
@@ -79,7 +80,7 @@ public class SearchFragment extends Fragment {
     private void load_detail() {
         modelCoursesArrayList = new ArrayList<>();
 
-            Model_Courses modelAndroid = new Model_Courses(
+            Model_Content modelAndroid = new Model_Content(
 
             );
             modelCoursesArrayList.add(modelAndroid);

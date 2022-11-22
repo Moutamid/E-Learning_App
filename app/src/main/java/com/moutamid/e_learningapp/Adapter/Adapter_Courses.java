@@ -65,9 +65,15 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         holder.member.setText(""+member_tv);
         holder.efficient.setText(eff_tv);
         holder.price.setText(price_tv);
-        holder.status.setText(status_tv);
+        holder.status.setText("Best Seller");
         holder.time.setText(time_tv);
         holder.desc.setText(des_tv);
+
+        if (modelAndroid.isIs_bestSeller()){
+            holder.status.setVisibility(View.VISIBLE);
+        } else {
+            holder.status.setVisibility(View.GONE);
+        }
 
         Glide.with(context).load(modelAndroid.getImage()).into(holder.image);
 

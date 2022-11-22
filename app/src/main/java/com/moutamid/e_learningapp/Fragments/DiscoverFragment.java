@@ -53,7 +53,6 @@ public class DiscoverFragment extends Fragment {
                 .addOnFailureListener(e -> {
                     Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
-
         return view;
     }
 }

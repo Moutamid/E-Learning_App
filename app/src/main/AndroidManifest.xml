@@ -59,16 +59,6 @@
         </activity>
     </application>
 
-    <!--  android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"    -->
-
-    <!--<com.potyvideo.library.AndExoPlayerView
-        android:id="@+id/andExoPlayerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:andexo_aspect_ratio="aspect_16_9"
-        app:andexo_full_screen="true"
-        app:andexo_play_when_ready="true"
-        app:andexo_show_controller="true"
-        app:andexo_resize_mode="Fit" />-->
+    <!--  android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"  -->
 
 </manifest>

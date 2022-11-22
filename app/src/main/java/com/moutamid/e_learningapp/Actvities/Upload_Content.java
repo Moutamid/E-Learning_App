@@ -50,6 +50,7 @@ public class Upload_Content extends AppCompatActivity {
     ArrayAdapter<CharSequence> catgoryAdapter;
     AutoCompleteTextView categories;
     TextInputLayout et_category;
+    String tutor;
 
     private static final int IMAGE_REQUEST = 1;
     private static final int Video_REQUEST = 2;
@@ -149,6 +150,14 @@ public class Upload_Content extends AppCompatActivity {
     }
 
     private void getCourseData() {
+        Constants.databaseReference().child("users").child(Constants.auth().getCurrentUser().getUid())
+                .get().addOnCompleteListener(task -> {
+                   if (task.isSuccessful()){
+                       tutor = task.getResult().child("name").getValue().toString();
+                   } else {
+                       Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                   }
+                });
         String l = getVideoLength();
         model_content = new Model_Content(
                 uuID,
@@ -157,7 +166,7 @@ public class Upload_Content extends AppCompatActivity {
                 "",
                 "",
                 0,
-                "By ",
+                tutor,
                 l,
                 false,
                 videoLink,

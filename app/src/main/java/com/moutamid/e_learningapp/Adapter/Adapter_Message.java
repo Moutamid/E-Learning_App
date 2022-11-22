@@ -70,9 +70,9 @@ public class Adapter_Message extends RecyclerView.Adapter<Adapter_Message.Holder
 
     class HolderAndroid extends RecyclerView.ViewHolder {
 
-        private ImageView sender_img ;
-        private TextView message_chat ;
-        private TextView time_chat ;
+        private ImageView sender_img;
+        private TextView message_chat;
+        private TextView time_chat;
 
         HolderAndroid(@NonNull View itemView) {
             super(itemView);
