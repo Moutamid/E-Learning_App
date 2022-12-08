@@ -33,11 +33,17 @@ public class Splash extends AppCompatActivity implements ConnectionReceiver.Rece
         checkConnection();
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
-        checkConnection();
         super.onStart();
-    }*/
+        checkConnection();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkConnection();
+    }
 
     private void checkConnection() {
         IntentFilter intentFilter = new IntentFilter();

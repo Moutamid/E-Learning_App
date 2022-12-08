@@ -9,9 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        tools:context=".Actvities.Chat_Activity">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -39,7 +37,7 @@
                         android:id="@+id/content_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Vedio one Automatically Playing..."
+                        android:text="Playing..."
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -60,6 +58,7 @@
                         android:nestedScrollingEnabled="false"
                         android:orientation="vertical"
                         android:scrollbars="vertical"
+                        android:visibility="gone"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/row_content" />
 
@@ -67,6 +66,32 @@
             </androidx.core.widget.NestedScrollView>
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lockLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/rectangle4_black">
+
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:src="@drawable/ic_baseline_lock_24"
+                android:layout_marginBottom="25sp"
+                app:tint="@color/appClr" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please Buy this Course First"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

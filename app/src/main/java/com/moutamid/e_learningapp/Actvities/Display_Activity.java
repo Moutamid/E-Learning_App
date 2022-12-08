@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 import com.moutamid.e_learningapp.Fragments.Community_Fragment;
@@ -40,6 +41,7 @@ public class Display_Activity extends AppCompatActivity {
 
         mTabLayout = findViewById(R.id.tabLayout);
         mViewPager = findViewById(R.id.viewPager);
+
 
         setupViewPager(mViewPager);
 

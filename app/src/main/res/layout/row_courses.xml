@@ -53,11 +53,11 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
-                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/rectangle4_black"
                     android:padding="5dp"
-                    android:text="2h 39min" />
+                    android:text="2h 39min"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 

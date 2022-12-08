@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.Models.Model_Enrolled;
 import com.moutamid.e_learningapp.R;
 
@@ -17,9 +19,9 @@ import java.util.ArrayList;
 public class Adapter_Enrolled extends RecyclerView.Adapter<Adapter_Enrolled.HolderAndroid> {
 
     private Context context;
-    private ArrayList<Model_Enrolled> androidArrayList;
+    private ArrayList<Model_Content> androidArrayList;
 
-    public Adapter_Enrolled(Context context, ArrayList<Model_Enrolled> androidArrayList) {
+    public Adapter_Enrolled(Context context, ArrayList<Model_Content> androidArrayList) {
         this.context = context;
         this.androidArrayList = androidArrayList;
     }
@@ -33,17 +35,16 @@ public class Adapter_Enrolled extends RecyclerView.Adapter<Adapter_Enrolled.Hold
 
     @Override
     public void onBindViewHolder(@NonNull HolderAndroid holder, int position) {
-        Model_Enrolled modelAndroid = androidArrayList.get(position);
+        Model_Content modelAndroid = androidArrayList.get(position);
 
         String title_tv = modelAndroid.getTitle();
         String tutor_tv = modelAndroid.getTutor();
 
-        int image_1 = modelAndroid.getImage();
-
         holder.title.setText(title_tv);
         holder.tutor.setText(tutor_tv);
 
-        holder.image.setImageResource(image_1);
+        Glide.with(context).load(modelAndroid.getImage()).into(holder.image);
+
     }
 
     @Override

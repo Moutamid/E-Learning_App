@@ -1,5 +1,6 @@
 package com.moutamid.e_learningapp.Adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
+import com.fxn.stash.Stash;
 import com.moutamid.e_learningapp.Actvities.Display_Activity;
 import com.moutamid.e_learningapp.Actvities.Sign_Up_Activity;
 import com.moutamid.e_learningapp.Constants;
@@ -31,6 +33,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
     private Context context;
     private ArrayList<Model_Content> androidArrayList;
     ArrayList<Model_Content> listAll;
+    ProgressDialog progressDialog;
 
     public Adapter_Courses(Context context, ArrayList<Model_Content> androidArrayList) {
         this.context = context;
@@ -53,7 +56,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         String tutor_tv = modelAndroid.getTutor();
         long member_tv = modelAndroid.getMember();
         String eff_tv = modelAndroid.getEfficient();
-        String price_tv = modelAndroid.getPrice();
+        long price_tv = modelAndroid.getPrice();
         String status_tv = modelAndroid.getStatus();
         String time_tv = modelAndroid.getVideo_length();
         String des_tv = modelAndroid.getDesc();
@@ -64,7 +67,7 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
         holder.tutor.setText(tutor_tv);
         holder.member.setText(""+member_tv);
         holder.efficient.setText(eff_tv);
-        holder.price.setText(price_tv);
+        holder.price.setText(""+price_tv);
         holder.status.setText("Best Seller");
         holder.time.setText(time_tv);
         holder.desc.setText(des_tv);
@@ -77,13 +80,19 @@ public class Adapter_Courses extends RecyclerView.Adapter<Adapter_Courses.Holder
 
         Glide.with(context).load(modelAndroid.getImage()).into(holder.image);
 
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context , Display_Activity.class);
+            Stash.put("ID", modelAndroid.getCourse_id());
+            Stash.put("sellerID", modelAndroid.getSellerID());
+            context.startActivity(intent);
+            Animatoo.animateFade(context);
+        });
+
         holder.enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Constants.auth().getCurrentUser() != null){
-                    Intent intent = new Intent(context , Display_Activity.class);
-                    context.startActivity(intent);
-                    Animatoo.animateFade(context);
+
                 } else {
                     Intent intent = new Intent(context , Sign_Up_Activity.class);
                     context.startActivity(intent);

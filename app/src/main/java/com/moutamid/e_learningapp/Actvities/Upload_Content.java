@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -31,6 +32,7 @@ import com.moutamid.e_learningapp.Constants;
 import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.R;
 
+import java.sql.Time;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -137,17 +139,19 @@ public class Upload_Content extends AppCompatActivity {
                 .start();
     }
 
+    @SuppressLint("DefaultLocale")
     private String getVideoLength(){
         MediaPlayer mp = MediaPlayer.create(this, uriVideo);
         int duration = mp.getDuration();
         mp.release();
         /*convert millis to appropriate time*/
-        return String.format("%d min, %d sec",
-                TimeUnit.MILLISECONDS.toMinutes(duration),
-                TimeUnit.MILLISECONDS.toSeconds(duration) -
-                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))
+        return String.format("%dh, %d min",
+                TimeUnit.MILLISECONDS.toHours(duration),
+                TimeUnit.MILLISECONDS.toMinutes(duration)
         );
     }
+
+    // TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))
 
     private void getCourseData() {
         Constants.databaseReference().child("users").child(Constants.auth().getCurrentUser().getUid())
@@ -172,7 +176,8 @@ public class Upload_Content extends AppCompatActivity {
                 videoLink,
                 imageLink,
                 et_category.getEditText().getText().toString(),
-                price.getText().toString()
+                Long.parseLong(price.getText().toString()),
+                Constants.auth().getCurrentUser().getUid()
         );
         Constants.databaseReference().child("course_contents").child(Constants.auth().getCurrentUser().getUid())
                 .child(uuID).setValue(model_content)
@@ -191,7 +196,7 @@ public class Upload_Content extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Video"), Video_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, ""), Video_REQUEST);
     }
 
     private String getfiletype(Uri videouri) {

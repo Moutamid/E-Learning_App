@@ -9,7 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
 import com.moutamid.e_learningapp.Adapter.Adapter_Enrolled;
+import com.moutamid.e_learningapp.Constants;
+import com.moutamid.e_learningapp.Models.CourseIDs;
+import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.Models.Model_Enrolled;
 import com.moutamid.e_learningapp.R;
 
@@ -22,31 +26,12 @@ public class MyCourseFragment extends Fragment {
     private int[] images1_detail = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.course_img};
 
     private RecyclerView detail_recycler;
-    private ArrayList<Model_Enrolled> modelEnrolledArrayList;
+    private ArrayList<Model_Content> modelEnrolledArrayList;
     private Adapter_Enrolled adapter_enrolled;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
+    ArrayList<CourseIDs> courseIDs = new ArrayList<>();
 
     public MyCourseFragment() {
-    }
-    public static MyCourseFragment newInstance(String param1, String param2) {
-        MyCourseFragment fragment = new MyCourseFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -54,22 +39,38 @@ public class MyCourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_course, container, false);
         detail_recycler = view.findViewById(R.id.recyclerView_enrolled);
-        load_detail();
+
+        modelEnrolledArrayList = new ArrayList<>();
+
+        Constants.databaseReference().child("users").child(Constants.auth().getCurrentUser().getUid())
+                .child("enrolled").get()
+                .addOnSuccessListener(dataSnapshot -> {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        CourseIDs model = ds.getValue(CourseIDs.class);
+                        courseIDs.add(model);
+                    }
+                    getData();
+                }).addOnFailureListener(e -> {
+
+                });
+
+        // load_detail();
         return view;
     }
 
-    private void load_detail() {
-        modelEnrolledArrayList = new ArrayList<>();
-
-        for (int i = 0; i < course_title.length; i++) {
-            Model_Enrolled modelAndroid = new Model_Enrolled(
-                    course_title[i],
-                    course_tutor[i],
-                    images1_detail[i]
-            );
-            modelEnrolledArrayList.add(modelAndroid);
+    private void getData() {
+        for (int i = 0; i < courseIDs.size(); i++) {
+            Constants.databaseReference().child("course_contents").child(courseIDs.get(i).getSellerID())
+                    .child(courseIDs.get(i).getID())
+                    .get().addOnSuccessListener(dataSnapshot -> {
+                        Model_Content model = dataSnapshot.getValue(Model_Content.class);
+                        modelEnrolledArrayList.add(model);
+                        adapter_enrolled = new Adapter_Enrolled(getContext(), modelEnrolledArrayList);
+                        detail_recycler.setAdapter(adapter_enrolled);
+                    })
+                    .addOnFailureListener(e -> {
+                        e.printStackTrace();
+                    });
         }
-        adapter_enrolled = new Adapter_Enrolled(getContext(), modelEnrolledArrayList);
-        detail_recycler.setAdapter(adapter_enrolled);
     }
 }

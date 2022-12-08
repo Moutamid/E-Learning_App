@@ -10,7 +10,9 @@ public class Model_Content {
     String video_length;
     boolean is_bestSeller;
     String video_link, image;
-    String category, price;
+    String category;
+    long price;
+    String sellerID;
 
     public Model_Content() {}
 
@@ -24,7 +26,7 @@ public class Model_Content {
         this.category = category;
     }
 
-    public Model_Content(String course_id, String title, String desc, String status, String efficient, long member, String tutor, String video_length, boolean is_bestSeller, String video_link, String image, String category, String price) {
+    public Model_Content(String course_id, String title, String desc, String status, String efficient, long member, String tutor, String video_length, boolean is_bestSeller, String video_link, String image, String category, long price, String sellerID) {
         this.course_id = course_id;
         this.title = title;
         this.desc = desc;
@@ -38,13 +40,22 @@ public class Model_Content {
         this.image = image;
         this.category = category;
         this.price = price;
+        this.sellerID = sellerID;
     }
 
-    public String getPrice() {
+    public String getSellerID() {
+        return sellerID;
+    }
+
+    public void setSellerID(String sellerID) {
+        this.sellerID = sellerID;
+    }
+
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 

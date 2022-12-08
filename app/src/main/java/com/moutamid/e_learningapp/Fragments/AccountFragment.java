@@ -21,33 +21,11 @@ import com.moutamid.e_learningapp.Actvities.Upload_Content;
 
 public class AccountFragment extends Fragment {
 
-    Button singIn , signUp , instructor , content_btn;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+    Button singIn , signUp , instructor , content_btn, logout;
 
     public AccountFragment() {
     }
 
-    public static AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,9 +35,11 @@ public class AccountFragment extends Fragment {
         instructor = view.findViewById(R.id.instructor);
         singIn = view.findViewById(R.id.singIn);
         signUp = view.findViewById(R.id.signUp);
+        logout = view.findViewById(R.id.logout);
 
         if (Constants.auth().getCurrentUser() == null){
             content_btn.setVisibility(View.GONE);
+            logout.setVisibility(View.GONE);
         } else {
             Constants.databaseReference().child("users")
                     .child(Constants.auth().getCurrentUser().getUid())
@@ -71,15 +51,21 @@ public class AccountFragment extends Fragment {
                                instructor.setVisibility(View.GONE);
                                signUp.setVisibility(View.GONE);
                                singIn.setVisibility(View.GONE);
+                               logout.setVisibility(View.VISIBLE);
                            } else {
                                content_btn.setVisibility(View.GONE);
                                instructor.setVisibility(View.GONE);
                                signUp.setVisibility(View.GONE);
                                singIn.setVisibility(View.GONE);
+                               logout.setVisibility(View.VISIBLE);
                            }
                        }
                     });
         }
+        logout.setOnClickListener(v -> {
+            Constants.auth().signOut();
+            getActivity().recreate();
+        });
         singIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

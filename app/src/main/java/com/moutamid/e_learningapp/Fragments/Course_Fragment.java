@@ -1,66 +1,81 @@
 package com.moutamid.e_learningapp.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.fxn.stash.Stash;
+import com.moutamid.e_learningapp.Constants;
+import com.moutamid.e_learningapp.Models.Model_Content;
 import com.moutamid.e_learningapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Course_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Course_Fragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String course_ID, sellerID;
+    Context context;
+    ImageView image;
+    TextView title, tutor, member, efficient, status, time, desc;
+    Button enroll;
 
     public Course_Fragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Course_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Course_Fragment newInstance(String param1, String param2) {
-        Course_Fragment fragment = new Course_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_course_, container, false);
+        context = view.getContext();
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course_, container, false);
+        image = view.findViewById(R.id.course_img);
+        title = view.findViewById(R.id.course_title);
+        tutor = view.findViewById(R.id.course_tutor);
+        member = view.findViewById(R.id.course_member);
+        efficient = view.findViewById(R.id.course_efficent);
+        status = view.findViewById(R.id.course_status);
+        time = view.findViewById(R.id.course_time);
+        desc = view.findViewById(R.id.course_des);
+        enroll = view.findViewById(R.id.btn_enroll);
+
+        course_ID = Stash.getString("ID");
+        sellerID = Stash.getString("sellerID");
+
+        Constants.databaseReference().child("users").child(Constants.auth().getCurrentUser().getUid())
+                .child("enrolled").child(course_ID).get()
+                .addOnSuccessListener(dataSnapshot -> {
+                    enroll.setText("Enrolled");
+                    enroll.setEnabled(false);
+                })
+                .addOnFailureListener(e -> {
+                   e.printStackTrace();
+                    enroll.setText("Enroll Now");
+                    enroll.setEnabled(true);
+                });
+
+        Constants.databaseReference().child("course_contents").child(sellerID).child(course_ID)
+                .get().addOnSuccessListener(dataSnapshot -> {
+                    Model_Content model = dataSnapshot.getValue(Model_Content.class);
+                    Glide.with(view.getContext()).load(model.getImage()).into(image);
+                    title.setText(model.getTitle());
+                    tutor.setText("By " + model.getTutor());
+                    member.setText(""+model.getMember());
+                    efficient.setText(model.getEfficient());
+                    status.setText(model.getStatus());
+                    time.setText(model.getVideo_length());
+                    desc.setText(model.getDesc());
+                })
+                .addOnFailureListener(e -> {
+                    e.printStackTrace();
+                });
+
+        return view;
     }
 }

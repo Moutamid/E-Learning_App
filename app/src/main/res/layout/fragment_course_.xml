@@ -52,6 +52,7 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/rectangle4_black"
                     android:padding="5dp"
+                    android:textColor="@color/white"
                     android:text="2h 39min" />
 
             </RelativeLayout>
@@ -130,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
                     android:id="@+id/btn_enroll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

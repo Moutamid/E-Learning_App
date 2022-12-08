@@ -40,6 +40,16 @@
                     android:text="Sign In Now !" />
 
                 <Button
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rectangle"
+                    android:text="Logout" />
+
+                <Button
                     android:id="@+id/signUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

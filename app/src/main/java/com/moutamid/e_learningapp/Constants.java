@@ -17,6 +17,7 @@ public class Constants {
         db.keepSynced(true);
         return db;
     }
+
     public static StorageReference storageReference(String auth){
         StorageReference sr = FirebaseStorage.getInstance().getReference().child("ELearningApp").child(auth);
         return sr;
